@@ -1,20 +1,2 @@
-/* Top level element of our component */
-.top-element {
-  /* Primary color for branding */
-  border: 1px solid #999999;
-  margin: 1rem;
-}
-
-.top-element .title {
-  color: #3F3F3F;
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-/* Used as subtitle */
-.top-element .title span {
-  border-bottom: 1px solid #999999;
-  color: #262626;
-  font-size: 1rem;
-  font-weight: normal;
-}
+.top-element{border:1px solid #999;margin:16px;margin:1rem}.top-element .title{color:#3f3f3f;font-size:32px;font-size:2rem;font-weight:700}.top-element .title span{border-bottom:1px solid #999;color:#262626;font-size:16px;font-size:1rem;font-weight:400}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0EsYUFFRSxzQkFBMEIsWUFDMUIsV0FBYSxDQUNkLG9CQUdDLGNBQWUsZUFDZixlQUFnQixlQUNFLENBQ25CLHlCQUlDLDZCQUFpQyxjQUNsQixlQUNmLGVBQWdCLGVBQ0ksQ0FDckIiLCJmaWxlIjoiYXBwLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIFRvcCBsZXZlbCBlbGVtZW50IG9mIG91ciBjb21wb25lbnQgKi9cbi50b3AtZWxlbWVudCB7XG4gIC8qIFByaW1hcnkgY29sb3IgZm9yIGJyYW5kaW5nICovXG4gIGJvcmRlcjogMXB4IHNvbGlkICM5OTk5OTk7XG4gIG1hcmdpbjogMXJlbTtcbn1cblxuLnRvcC1lbGVtZW50IC50aXRsZSB7XG4gIGNvbG9yOiAjM0YzRjNGO1xuICBmb250LXNpemU6IDJyZW07XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xufVxuXG4vKiBVc2VkIGFzIHN1YnRpdGxlICovXG4udG9wLWVsZW1lbnQgLnRpdGxlIHNwYW4ge1xuICBib3JkZXItYm90dG9tOiAxcHggc29saWQgIzk5OTk5OTtcbiAgY29sb3I6ICMyNjI2MjY7XG4gIGZvbnQtc2l6ZTogMXJlbTtcbiAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbn1cbiJdfQ== */
