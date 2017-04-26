@@ -4,6 +4,14 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'), //pulls in the data from package.json and stores it in the pkg property.
+        copy: {
+            main: {
+                files: [
+                    // includes files within path
+                    {expand: true, src: ['html/*.html'], dest: 'dest/html/', filter: 'isFile'}
+                ],
+            },
+        },
         postcss: {
             options: {
                 map: true, // inline sourcemaps
@@ -111,7 +119,7 @@ module.exports = function(grunt) {
         version: {
             src: ['package.json', 'index.html'],
             options: {
-                prefix: '[\?]?version[\'\"]?[=:]\s*[\'\"]?'
+                prefix: '[\\?]?version[\\\'"]?[=:]\\s*[\\\'"]?'
             }
         },
         exec: {
@@ -140,7 +148,7 @@ module.exports = function(grunt) {
     grunt.registerTask('css', ['sass', 'csslint', 'postcss', 'cssmin']);
 
     //HTML TASKS//
-    grunt.registerTask('html', ['htmllint']);
+    grunt.registerTask('html', ['htmllint','copy']);
 
     //JS TASKS//
 
