@@ -42,28 +42,32 @@ module.exports = function(grunt) {
       }
     },
     sass: {
-      all: {
-        files: {
-          'styles/style.css': 'sass/style.scss'
+        all: {
+            files:[{
+                expand: true,
+                cwd: 'sass',
+                src: ['*.scss'],
+                dest: 'styles',
+                ext: '.css'
+            }]
         }
-      }
     },
-    watch: {
-      scripts: {
-        files: ['js/*.js'],
-        tasks: ['jshint:dev'],
-        options: {
-          livereload: true
-        }
+      watch: {
+          scripts: {
+              files: ['js/*.js'],
+              tasks: ['jshint:dev'],
+              options: {
+                  livereload: true
+              }
+          },
+          sass: {
+              files: ['sass/*.scss'],
+              tasks: ['sass'],
+              options: {
+                  livereload: true
+              }
+          }
       },
-      sass: {
-        files: ['sass/*.scss'],
-        tasks: ['sass'],
-        options: {
-          livereload: true
-        }
-      }
-    },
     jasmine: {
       all: {
         src: ['js/*.js'],
@@ -115,6 +119,9 @@ module.exports = function(grunt) {
     }
     grunt.task.run(['version::' + releaseType, 'exec:add', 'exec:commit', 'exec:push']);
   });
+
+  // grunt.registerTask('minify', ['cssmin', 'uglify']); Registers a new
+    // multiple task runner from existing tasks
 
   // Default task(s).
   grunt.registerTask('default', function () {

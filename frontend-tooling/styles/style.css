@@ -4,7 +4,8 @@
   .top-element .title {
     color: #3F3F3F;
     font-size: 2rem;
-    font-weight: bold; }
+    font-weight: bold;
+    background-color: blue; }
     .top-element .title span {
       border-bottom: 1px solid #999999;
       color: #262525;
