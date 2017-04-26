@@ -103,7 +103,7 @@ module.exports = function(grunt) {
       },
       push: 'git push' // Send our changes to the repository
     }
-    //test
+    //teste
   });
 
   grunt.registerTask('minify', function (full) {
