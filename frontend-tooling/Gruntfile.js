@@ -88,7 +88,7 @@ module.exports = function(grunt) {
     version: {
       src: ['package.json', 'index.html'],
       options: {
-        prefix: '[\\?]?version[\\\'"]?[=:]\\s*[\\\'"]?'
+        prefix: '[\?]?version[\'\"]?[=:]\s*[\'\"]?'
       }
     },
     exec: {
@@ -121,7 +121,7 @@ module.exports = function(grunt) {
   });
 
   // grunt.registerTask('minify', ['cssmin', 'uglify']); Registers a new
-    // multiple task runner from existing tasks
+    // multiple task runner from existing tasksgrunt
 
   // Default task(s).
   grunt.registerTask('default', function () {
