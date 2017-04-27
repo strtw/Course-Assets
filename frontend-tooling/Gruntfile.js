@@ -8,7 +8,7 @@ module.exports = function(grunt) {
             main: {
                 files: [
                     // includes files within path
-                    {expand: true, src: ['html/*.html'], dest: 'dest/html/', filter: 'isFile'}
+                    {expand: true, src: ['html/*.html'], dest: 'dest/', filter: 'isFile'}
                 ],
             },
         },
@@ -179,7 +179,3 @@ module.exports = function(grunt) {
         console.log('Grunt has run');
     });
 };
-//Create a `build` that runs our all our tasks so far (except `deploy`) such that
-// when it’s completed you have a fully compiled and optimized set of code inside `dest/`.
-// Then add `build` as the first task in `deploy` such that running `deploy` does everything
-// you need to compile and ship your code.

@@ -1,4 +1,4 @@
-describe('App', function () {
+describe('app', function () {
   beforeEach(function () {
     spyOn(console, 'log');
   });
