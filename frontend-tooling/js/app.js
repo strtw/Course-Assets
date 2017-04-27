@@ -17,5 +17,5 @@
         this.$running = false;
       }
     }
-  }
+  };
 })(window);
