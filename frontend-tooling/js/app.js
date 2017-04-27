@@ -19,5 +19,3 @@
     }
   }
 })(window);
-
-console.log("test");
