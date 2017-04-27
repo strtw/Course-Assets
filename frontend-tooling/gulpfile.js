@@ -12,6 +12,8 @@ const jasmine = require('gulp-jasmine');
 var rev = require('gulp-rev-append');
 var bump = require('gulp-bump');
 var git = require('gulp-git');
+var htmlLint = require('gulp-html-lint');
+const imagemin = require('gulp-imagemin');
 
 ///HELPERS///
 
@@ -22,6 +24,17 @@ var exitOnJshintError = map(function (file, cb) { // http://stackoverflow.com/qu
     }
 });
 
+///HTML///
+
+gulp.task('htmlLinter', function() {
+    return gulp.src('./dest/html/*.html')
+        .pipe(htmlLint())
+        .pipe(htmlLint.format())
+        .pipe(htmlLint.failOnError());
+});
+
+gulp.task('html',['htmlLinter']);
+
 ///IMAGES///
 
 gulp.task('img-min', function() {
@@ -29,6 +42,8 @@ gulp.task('img-min', function() {
         .pipe(imagemin())
         .pipe(gulp.dest('dest/img'))
 });
+
+gulp.task('img',['img-min']);
 
 ///CSS///
 
@@ -38,30 +53,24 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('./styles'));
 });
 
-gulp.task('concat-css', function () {
+gulp.task('concat-css',['sass'], function () { ///['sass'] is dependency syntax
     return gulp.src('styles/*.css')
         .pipe(concatCss("bundle.css"))
         .pipe(gulp.dest('dest/styles'));
 });
 
-gulp.task('minify-css', function() {
+gulp.task('minify-css',['concat-css'], function() {
     return gulp.src('dest/styles/bundle.css')
         .pipe(cleanCSS())
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('dest/styles/'));
 });
 
+gulp.task('css',['sass','concat-css','minify-css']);
 
 
 
 ///JAVASCRIPT///
-
-gulp.task('scripts', function() { //concatenate
-    return gulp.src('js/*.js')
-        .pipe(concat('all.js'))
-        .pipe(gulp.dest('./dest/js/'));
-});
-
 
 gulp.task('lint', function() {
     gulp.src('js/*.js')
@@ -70,7 +79,14 @@ gulp.task('lint', function() {
         .pipe(exitOnJshintError);
 });
 
-gulp.task('compress', function (cb) {
+gulp.task('scripts',['lint'], function() { //concatenate
+    return gulp.src('js/*.js')
+        .pipe(concat('all.js'))
+        .pipe(gulp.dest('./dest/js/'));
+});
+
+
+gulp.task('compress',['scripts'], function (cb) { //uglify
     pump([
             gulp.src('dest/js/*.js'),
             uglify(),
@@ -79,6 +95,8 @@ gulp.task('compress', function (cb) {
         cb
     );
 });
+
+gulp.task('js',['lint','scripts','compress']);
 
 
 ///TESTING///
@@ -89,6 +107,7 @@ gulp.src('spec/app/appSpec.js')
     .pipe(jasmine({verbose: true}))
 );
 
+gulp.task('test',['jasmine']);
 
 ///VERSIONING///
 
@@ -104,6 +123,8 @@ gulp.task('bump', function(){
         .pipe(gulp.dest('./'));
 });
 
+gulp.task('version',['rev','bump']);
+
 
 ///GIT///
 
@@ -112,16 +133,22 @@ gulp.task('add', function(){
         .pipe(git.add());
 });
 
-gulp.task('commit', function(){
+gulp.task('commit', ['add'],function(){
     return gulp.src('./')
         .pipe(git.commit('initial commit'));
 });
 
-gulp.task('push', function(){
+gulp.task('push', ['commit'],function(){
     git.push('origin', 'master', function (err) {
         if (err) throw err;
     });
 });
+
+gulp.task('git',['add','commit','push']);
+
+///DEPLOY///
+
+gulp.task('deploy',['img','css','js','test','version','git']);
 
 
 ///DEFAULT///
