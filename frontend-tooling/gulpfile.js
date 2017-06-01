@@ -67,7 +67,7 @@ gulp.task('minify-css',['concat-css'], function() {
         .pipe(gulp.dest('dest/styles/'));
 });
 
-gulp.task('css',['minify-css']);
+gulp.task('css',['sass','concat-css','minify-css']);
 
 
 
