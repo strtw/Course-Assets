@@ -1,3 +1,6 @@
+
+var app = require('../../js/app.js');
+
 describe('app', function () {
   beforeEach(function () {
     spyOn(console, 'log');

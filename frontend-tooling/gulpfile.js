@@ -15,6 +15,7 @@ var git = require('gulp-git');
 var htmlLint = require('gulp-html-lint');
 const imagemin = require('gulp-imagemin');
 
+
 ///HELPERS///
 
 var exitOnJshintError = map(function (file, cb) { // http://stackoverflow.com/questions/27852814/gulp-jshint-how-to-fail-the-build
@@ -66,7 +67,7 @@ gulp.task('minify-css',['concat-css'], function() {
         .pipe(gulp.dest('dest/styles/'));
 });
 
-gulp.task('css',['sass','concat-css','minify-css']);
+gulp.task('css',['minify-css']);
 
 
 
@@ -164,8 +165,8 @@ gulp.task('default', function () {
 //Concatenate and minify JavaScript ***
 //Concatenate and minify CSS ****
 //Optimize Images ***
-//Run Jasmine against our compiled JavaScript
-//Update the version number in both `package.json` and `index.html`.
-// Push our updates to git
-//Lint html
+//Run Jasmine against our compiled JavaScript ***
+//Update the version number in both `package.json` and `index.html`. ***
+// Push our updates to git ***
+//Lint html *** //ERROR
 //Exit on any failure
