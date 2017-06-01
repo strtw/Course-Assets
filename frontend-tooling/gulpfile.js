@@ -149,7 +149,7 @@ gulp.task('git',['add','commit','push']);
 
 ///DEPLOY///
 
-gulp.task('deploy',['html','img','css','js','test','version','git']);
+gulp.task('deploy',['img','css','js','test','version','git']);
 
 
 ///DEFAULT///
