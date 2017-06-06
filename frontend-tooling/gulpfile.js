@@ -34,6 +34,7 @@ gulp.task('htmlLinter', function() {
         .pipe(htmlLint.failOnError());
 });
 
+
 gulp.task('html',['htmlLinter']);
 
 ///IMAGES///
@@ -149,7 +150,7 @@ gulp.task('git',['add','commit','push']);
 
 ///DEPLOY///
 
-gulp.task('deploy',['img','css','js','test','version','git']);
+gulp.task('deploy',['html','img','css','js','test','version','git']);
 
 
 ///DEFAULT///
